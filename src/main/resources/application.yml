@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: bank
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/onlinebank
+    password: ${MYSQL_PASSWORD:root}
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SMTP_EMAIL_ADDRESS:example@gmail.com}
+    password: ${SMTP_PASSWORD}
+    enabled: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

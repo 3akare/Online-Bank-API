@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:text="${subject}"></title>
+</head>
+<body>
+<h1>Congratulations!, <span th:text="${name}"></span></h1>
+<h2 th:text="${message}"></h2>
+<br/>
+<h2>Your Account number: <span th:text="${accountNumber}"></span></h2>
+<h2>Current Account Balance: <span th:text="${balance}"></span></h2>
+<br/>
+<h2>Thank you for using 3ank Inc. <span>3ank </span>&copy;<span th:text="${year}"></span></h2>
+</body>
+</html>

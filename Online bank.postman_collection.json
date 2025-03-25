@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "98c5d7f5-39ab-4785-b2c0-fd2e4d4d47e6",
+		"name": "Online bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21805689"
+	},
+	"item": [
+		{
+			"name": "Create User Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"let senderAccountNumber = response.accountInfo.accountNumber;",
+							"",
+							"if (!pm.collectionVariables.get(\"senderAccountNumber\"))",
+							"    pm.collectionVariables.set(\"senderAccountNumber\",senderAccountNumber);",
+							"else",
+							"    pm.collectionVariables.set(\"receiverAccountNumber\",senderAccountNumber);",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\",\n    \"otherName\": \"{{$randomUserName}}\",\n    \"gender\": \"Male\",\n    \"address\": \"{{$randomStreetAddress}}\",\n    \"stateOfOrigin\": \"Kwara\",\n    \"dataOfBirth\": \"{{$randomDatePast}}\",\n    \"email\": \"{{$randomExampleEmail}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternativePhoneNumber\" :\"{{$randomPhoneNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/createAccount",
+				"description": "### Create Account\n\nThis endpoint allows you to create a new account with the provided user details.\n\n#### Request Body\n\n- `firstName` (string): The first name of the user.\n    \n- `lastName` (string): The last name of the user.\n    \n- `otherName` (string): The other name or username of the user.\n    \n- `gender` (string): The gender of the user.\n    \n- `address` (string): The address of the user.\n    \n- `stateOfOrigin` (string): The state of origin of the user.\n    \n- `dateOfBirth` (string): The date of birth of the user.\n    \n- `email` (string): The email address of the user.\n    \n- `phoneNumber` (string): The phone number of the user.\n    \n- `alternativePhoneNumber` (string): An alternative phone number for the user.\n    \n\n#### Response\n\n- `responseCode` (string): The response code for the request.\n    \n- `responseMessage` (string): The response message for the request.\n    \n- `accountInfo` (object): Information about the created account.\n    \n    - `accountName` (string): The name of the account.\n        \n    - `accountNumber` (string): The account number.\n        \n    - `accountBalance` (number): The initial account balance."
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Account Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"let senderAccountNumber = response.accountInfo.accountNumber;",
+							"",
+							"if (!pm.collectionVariables.get(\"senderAccountNumber\"))",
+							"    pm.collectionVariables.set(\"senderAccountNumber\",senderAccountNumber);",
+							"else",
+							"    pm.collectionVariables.set(\"receiverAccountNumber\",senderAccountNumber);",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\",\n    \"otherName\": \"{{$randomUserName}}\",\n    \"gender\": \"Male\",\n    \"address\": \"{{$randomStreetAddress}}\",\n    \"stateOfOrigin\": \"Kwara\",\n    \"dataOfBirth\": \"{{$randomDatePast}}\",\n    \"email\": \"{{$randomExampleEmail}}\",\n    \"phoneNumber\": \"{{$randomPhoneNumber}}\",\n    \"alternativePhoneNumber\" :\"{{$randomPhoneNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/createAccount",
+				"description": "### Create Account\n\nThis endpoint allows you to create a new account with the provided user details.\n\n#### Request Body\n\n- `firstName` (string): The first name of the user.\n    \n- `lastName` (string): The last name of the user.\n    \n- `otherName` (string): The other name or username of the user.\n    \n- `gender` (string): The gender of the user.\n    \n- `address` (string): The address of the user.\n    \n- `stateOfOrigin` (string): The state of origin of the user.\n    \n- `dateOfBirth` (string): The date of birth of the user.\n    \n- `email` (string): The email address of the user.\n    \n- `phoneNumber` (string): The phone number of the user.\n    \n- `alternativePhoneNumber` (string): An alternative phone number for the user.\n    \n\n#### Response\n\n- `responseCode` (string): The response code for the request.\n    \n- `responseMessage` (string): The response message for the request.\n    \n- `accountInfo` (object): Information about the created account.\n    \n    - `accountName` (string): The name of the account.\n        \n    - `accountNumber` (string): The account number.\n        \n    - `accountBalance` (number): The initial account balance."
+			},
+			"response": []
+		},
+		{
+			"name": "Credit Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"{{senderAccountNumber}}\",\n    \"amount\" : 8000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/creditAccount",
+				"description": "### Credit Account API\n\nThis API endpoint allows you to credit an account with a specified amount.\n\n#### Request Body\n\n- `accountNumber` (string) - The account number to which the amount will be credited.\n    \n- `amount` (number) - The amount to be credited to the account.\n    \n\nExample:\n\n``` json\n{\n  \"accountNumber\": \"{{senderAccountNumber}}\",\n  \"amount\": 8000\n}\n\n ```\n\n#### Response\n\n- `responseCode` (string) - The response code indicating the status of the request.\n    \n- `responseMessage` (string) - A message providing additional information about the response.\n    \n- `accountInfo` (object) - Information about the credited account.\n    \n    - `accountName` (string) - The name of the account holder.\n        \n    - `accountNumber` (string) - The account number to which the amount was credited.\n        \n    - `accountBalance` (number) - The updated balance of the credited account.\n        \n\nExample:\n\n``` json\n{\n  \"responseCode\": \"\",\n  \"responseMessage\": \"\",\n  \"accountInfo\": {\n    \"accountName\": \"\",\n    \"accountNumber\": \"\",\n    \"accountBalance\": 0\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Debit Account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"{{senderAccountNumber}}\",\n    \"amount\" : 5000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/debitAccount",
+				"description": "### Debit Account\n\nThis endpoint allows you to debit a specified amount from a user's account.\n\n#### Request Body\n\n- `accountNumber` (string): The account number from which the amount will be debited.\n    \n- `amount` (number): The amount to be debited from the account.\n    \n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"responseCode\": {\n            \"type\": \"string\"\n        },\n        \"responseMessage\": {\n            \"type\": \"string\"\n        },\n        \"accountInfo\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"accountName\": {\n                    \"type\": \"string\"\n                },\n                \"accountNumber\": {\n                    \"type\": \"string\"\n                },\n                \"accountBalance\": {\n                    \"type\": \"number\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer Funds",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"senderAccountNumber\": \"{{senderAccountNumber}}\",\n    \"receiverAccountNumber\": \"{{receiverAccountNumber}}\",\n    \"amount\": 4000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/transfer",
+				"description": "### Transfer API\n\nThis API endpoint allows you to initiate a transfer between two accounts.\n\n#### Request Body\n\n- senderAccountNumber (string): The account number of the sender.\n    \n- receiverAccountNumber (string): The account number of the receiver.\n    \n- amount (number): The amount to be transferred.\n    \n\n#### Response\n\nThe response is in JSON format and has the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"responseCode\": {\n            \"type\": \"string\"\n        },\n        \"responseMessage\": {\n            \"type\": \"string\"\n        },\n        \"accountInfo\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"accountName\": {\n                    \"type\": \"string\"\n                },\n                \"accountNumber\": {\n                    \"type\": \"string\"\n                },\n                \"accountBalance\": {\n                    \"type\": \"number\"\n                }\n            }\n        }\n    }\n}\n\n ```\n\nThe `responseCode` indicates the status of the transfer request, and `responseMessage` provides additional information. The `accountInfo` object contains details of the account after the transfer.\n\n#### Example\n\n``` json\n{\n    \"responseCode\": \"A123\",\n    \"responseMessage\": \"Transfer successful\",\n    \"accountInfo\": {\n        \"accountName\": \"John Doe\",\n        \"accountNumber\": \"XXXXXX1234\",\n        \"accountBalance\": 56000\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Balance",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"{{senderAccountNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/balanceEnquiry",
+				"description": "### Balance Enquiry API\n\nThis API endpoint allows you to retrieve the balance information for a specific account.\n\n#### Request\n\n- Method: GET\n    \n- Endpoint: {{baseURL}}/api/v1/balanceEnquiry\n    \n- Headers: N/A\n    \n- { \"accountNumber\": \"{{senderAccountNumber}}\"\n    \n\n#### Response\n\nThe response for this request can be represented using the following JSON schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"responseCode\": {\n      \"type\": \"string\"\n    },\n    \"responseMessage\": {\n      \"type\": \"string\"\n    },\n    \"accountInfo\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"accountName\": {\n          \"type\": \"string\"\n        },\n        \"accountNumber\": {\n          \"type\": \"string\"\n        },\n        \"accountBalance\": {\n          \"type\": \"number\"\n        }\n      }\n    }\n  }\n}\n\n ```\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- { \"responseCode\": \"\", \"responseMessage\": \"\", \"accountInfo\": { \"accountName\": \"\", \"accountNumber\": \"\", \"accountBalance\": 0 }}\n    \n\n### Request\n\n- Method: GET\n    \n- Endpoint: {{baseURL}}/api/v1/balanceEnquiry\n    \n- Headers:\n    \n    - Content-Type: application/json\n        \n- Body:\n    \n    - accountNumber (string, required): The account number for which the balance information is requested.\n        \n\n### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- Body:\n    \n    - responseCode (string): The response code for the balance enquiry.\n        \n    - responseMessage (string): The response message for the balance enquiry.\n        \n    - accountInfo (object):\n        \n        - accountName (string): The name associated with the account.\n            \n        - accountNumber (string): The account number for which the balance information is provided.\n            \n        - accountBalance (number): The current balance in the account."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"{{senderAccountNumber}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/api/v1/accountNameEnquiry",
+				"description": "This endpoint makes an HTTP GET request to retrieve account name information based on the provided account number.\n\n### Request\n\nThe request should include a JSON payload in the raw request body type with the following parameter:\n\n- `accountNumber`: The account number for which the name information is being requested.\n    \n\n### Response\n\nThe response to this request is a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"responseCode\": {\n      \"type\": \"string\"\n    },\n    \"responseMessage\": {\n      \"type\": \"string\"\n    },\n    \"accountInfo\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"accountName\": {\n          \"type\": \"string\"\n        },\n        \"accountNumber\": {\n          \"type\": \"string\"\n        },\n        \"accountBalance\": {\n          \"type\": \"number\"\n        }\n      }\n    }\n  }\n}\n\n ```\n\n### Request Body\n\n- accountNumber (string, required): The account number for which the name is being requested.\n    \n\n### Response\n\nThe response will include the account name associated with the provided account number."
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Bank Statement",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountNumber\": \"{{receiverAccountNumber}}\",\n    \"startDate\": \"2020-03-24\",\n    \"endDate\" : \"2025-03-26\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseURL}}/bankStatement",
+				"description": "## Bank Statement\n\nThis endpoint retrieves the bank statement for a specific account within a given date range.\n\n### Request\n\n- Method: GET\n    \n- URL: `{{baseURL}}/bankStatement`\n    \n- Headers:\n    \n    - Content-Type: application/json\n        \n- Body:\n    \n    - `accountNumber` (string): The account number for which the statement is being requested.\n        \n    - `startDate` (string): The start date of the statement period in the format 'YYYY-MM-DD'.\n        \n    - `endDate` (string): The end date of the statement period in the format 'YYYY-MM-DD'.\n        \n\n### Response\n\nThe response is in JSON format and includes an array of bank transactions with the following schema:\n\n``` json\n[\n  {\n    \"transactionId\": \"\",\n    \"transactionType\": \"\",\n    \"amount\": 0,\n    \"accountNumber\": \"\",\n    \"status\": \"\",\n    \"createdAt\": \"\",\n    \"modifiedAt\": \"\"\n  }\n]\n\n ```\n\n- `transactionId` (string): The unique identifier for the transaction.\n    \n- `transactionType` (string): The type of the transaction.\n    \n- `amount` (number): The amount of the transaction.\n    \n- `accountNumber` (string): The account number involved in the transaction.\n    \n- `status` (string): The status of the transaction.\n    \n- `createdAt` (string): The date and time when the transaction was created.\n    \n- `modifiedAt` (string): The date and time when the transaction was last modified."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "senderAccountNumber",
+			"value": ""
+		},
+		{
+			"key": "receiverAccountNumber",
+			"value": ""
+		}
+	]
+}
