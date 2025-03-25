@@ -31,6 +31,7 @@ Ensure you have the following environment set up:
     - MySQL password
     - MySQL should run on port **3306** (can be updated)
 
+Note: For the application to work, a database with the same name as in the properties file needs to be created.
 ## Running the Application
 1. Clone the repository.
 2. Install dependencies using Maven:

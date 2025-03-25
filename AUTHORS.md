@@ -9,7 +9,7 @@ GROUP F
 - Arosanyin Daniel Onaopemipo - 20/52HL030
 - Olaoye Olalekan Emmanuel - 20/52HL091
 - Ogunbiyi Kolade Bukunmi - 20/52HL083
-- Lawal Hamdallah Oluwafeyifunmi - 20/52Hl075
+- Lawal Hamdallah Oluwafeyifunmi - 20/52HL075
 - Tijani Abdulqudus Olayinka - 21/52HL159
 - Oni Michael - 20/52HL100
 - Ekubi Nicholas Tonghe - 20/52HL049
